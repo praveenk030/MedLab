@@ -1,9 +1,6 @@
 package com.example.medilab.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import springfox.documentation.spring.web.json.Json;
@@ -26,6 +23,6 @@ public class TestReportEntry {
     private LocalDate issueDate;
     private Integer modifiedCount;
     private String status;
-    @ManyToOne
+    @OneToOne
     private AppointmentTest appointmentTest;
 }

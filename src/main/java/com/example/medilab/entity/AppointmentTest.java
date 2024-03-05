@@ -1,9 +1,6 @@
 package com.example.medilab.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,10 +17,13 @@ public class AppointmentTest {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
-    private String testGroupID;
     private String tubeNo;
     private String collectedBy;
-    @OneToMany(mappedBy = "")
-    private List<Appointment> appointments;
+    @ManyToOne
+    private TestGroup testGroup;
+    @ManyToOne
+    private Appointment appointments;
+    @OneToOne
+    private TestReportEntry testReportEntry;
 
 }
