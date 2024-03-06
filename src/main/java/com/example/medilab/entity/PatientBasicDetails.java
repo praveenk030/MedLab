@@ -15,21 +15,32 @@ import javax.validation.constraints.Email;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tb_patient_basic_details")
 public class PatientBasicDetails {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id")
     private String id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "age")
+    private String age;
+    @Column(name = "date_of_birth")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private String dob;
+    @Column(name = "blood_group")
     private String bloodGroup;
-
+    @Column(name = "phone_number")
     private String phoneNumber;
     @Email
+    @Column(name = "email")
     private String email;
+    @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private String patientCode;
+    @Column(name = "patient_code")
+    private String patientId;
 }

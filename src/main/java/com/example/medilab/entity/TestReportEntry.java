@@ -13,16 +13,24 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Setter
 @Getter
+@Table(name = "tb_test_report_entry")
 public class TestReportEntry {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id")
     private String id;
+    @Column(name = "result")
     private String result;
+    @Column(name = "note")
     private String note;
+    @Column(name = "issue_date")
     private LocalDate issueDate;
+    @Column(name = "modified_counts")
     private Integer modifiedCount;
+    @Column(name = "status_P_d")
     private String status;
-    @OneToOne
+    @JoinColumn(name = "appointment_test_id")
+    @OneToOne(mappedBy = "testReportEntry")
     private AppointmentTest appointmentTest;
 }

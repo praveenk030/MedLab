@@ -12,18 +12,26 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@Table(name = "tb_appointment_test")
 public class AppointmentTest {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name ="id" )
     private String id;
+    @Column(name ="tube_no" )
     private String tubeNo;
+    @Column(name = "collected_by")
     private String collectedBy;
+    @Column(name = "test_status")
+    private  String status;
+    @JoinColumn(name = "test_group_id")
     @ManyToOne
     private TestGroup testGroup;
+    @JoinColumn(name ="appointment_id" )
     @ManyToOne
     private Appointment appointments;
-    @OneToOne
+    @OneToOne(mappedBy = "appointmentTest")
     private TestReportEntry testReportEntry;
 
 }
