@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
-
 @Builder
 @Entity
 @AllArgsConstructor
@@ -32,6 +30,6 @@ public class AppointmentTest {
     @ManyToOne
     private Appointment appointments;
     @OneToOne(mappedBy = "appointmentTest")
-    private TestReportEntry testReportEntry;
+    private TestReport testReport;
 
 }
